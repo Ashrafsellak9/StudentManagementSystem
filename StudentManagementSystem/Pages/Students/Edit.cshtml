@@ -1,0 +1,51 @@
+﻿@page
+@model StudentManagementSystem.Pages.Students.EditModel
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Edit Student</h2>
+
+    @if (!ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            <strong>Error:</strong> Please correct the errors below.
+        </div>
+    }
+
+    <form method="post" class="card p-4 shadow-sm">
+        <input type="hidden" asp-for="Student.Id" />
+
+        <div class="mb-3">
+            <label asp-for="Student.Name" class="form-label fw-bold">Full Name</label>
+            <input asp-for="Student.Name" class="form-control" placeholder="Enter student name" />
+            <span asp-validation-for="Student.Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Student.Age" class="form-label fw-bold">Age</label>
+            <input asp-for="Student.Age" class="form-control" type="number" min="18" max="60" placeholder="Enter student age" />
+            <span asp-validation-for="Student.Age" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Student.Course" class="form-label fw-bold">Course</label>
+            <input asp-for="Student.Course" class="form-control" placeholder="Enter course name" />
+            <span asp-validation-for="Student.Course" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save"></i> Save Changes
+            </button>
+            <a asp-page="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Cancel
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

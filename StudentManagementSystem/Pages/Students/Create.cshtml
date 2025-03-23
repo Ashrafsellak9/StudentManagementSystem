@@ -1,0 +1,32 @@
+﻿@page
+@model StudentManagementSystem.Pages.Students.CreateModel
+@{
+    ViewData["Title"] = "Add Student";
+}
+
+<h2 class="text-center mt-4">Add Student</h2>
+
+<form method="post" class="mt-4">
+    <div class="form-group mb-3">
+        <label asp-for="Student.Name" class="form-label"></label>
+        <input asp-for="Student.Name" class="form-control" placeholder="Enter student name" />
+        <span asp-validation-for="Student.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Student.Age" class="form-label"></label>
+        <input asp-for="Student.Age" type="number" class="form-control" min="1" placeholder="Enter age" />
+        <span asp-validation-for="Student.Age" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Student.Course" class="form-label"></label>
+        <select asp-for="Student.Course" class="form-select">
+            <option value="">Select a course</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Physics">Physics</option>
+        </select>
+        <span asp-validation-for="Student.Course" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>
